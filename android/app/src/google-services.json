@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "490968309317",
+    "project_id": "simplybirthed-972ac",
+    "storage_bucket": "simplybirthed-972ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490968309317:android:174408e1fff7bf31b4cd2c",
+        "android_client_info": {
+          "package_name": "com.simplybirthedcaregiver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490968309317-uburfspou9phhfp2urgkuillofiedugj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5yVYQhMjAinvwOUkCjwrDsKToHzLZDWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490968309317-uburfspou9phhfp2urgkuillofiedugj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "490968309317-cobdkrtbiaql1683i97t75icqq2nh692.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.simplybirthedcaregiver"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490968309317:android:1aa1550c8580e66fb4cd2c",
+        "android_client_info": {
+          "package_name": "com.simplybirtheduser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490968309317-uburfspou9phhfp2urgkuillofiedugj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA5yVYQhMjAinvwOUkCjwrDsKToHzLZDWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490968309317-uburfspou9phhfp2urgkuillofiedugj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "490968309317-cobdkrtbiaql1683i97t75icqq2nh692.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.simplybirthedcaregiver"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
