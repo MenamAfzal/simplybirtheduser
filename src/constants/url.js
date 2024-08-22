@@ -1,10 +1,10 @@
 const URL = {
-  BASE_URL: 'http://54.190.192.105:9196/api/v1/', //Staging URL
+  // BASE_URL: 'http://54.190.192.105:9196/api/v1/', //Staging URL
 
   //BASE_URL: 'http://192.168.0.161:8001/api/v1/', //Local URL
   //SOCKET_URL: 'http://192.168.0.161:8001', //Local Socket URL
 
-  // BASE_URL: 'http://54.215.167.176:8001/api/v1/', //Live URL
+  BASE_URL: 'http://54.215.167.176:8001/api/v1/', //Live URL
   SOCKET_URL: 'http://54.215.167.176:8001', //Live Socket URL
 
   FILE_URL: 'http://54.190.192.105:8001/',
@@ -47,9 +47,9 @@ const URL = {
   APPOINMENT_LIST: 'user/appointment-list?userId=', // Meet ups
   ALL_AVAILABILITY: 'user/all-caregiver-availability?date=',
   VIDEO_CALL: 'user/videoCall?sender=',
-  TERMS_CONDITION: 'static/pageUrls/?page=tnc',
-  HOW_IT_WORKS: 'static/pageUrls/?page=howItWorks',
-  ABOUT_US: 'static/pageUrls/?page=aboutus',
+  TERMS_CONDITION: 'cms/getCMSDetails?id=648fd97011d185f123d83baa',
+  HOW_IT_WORKS: 'cms/getCMSDetails?id=648fd99c11d185f123d83bac',
+  ABOUT_US: 'cms/getCMSDetails?id=648fd9bc11d185f123d83bae',
   BABY_STAGES: 'baby-stages?week=',
   NOTIFICATION: 'getNotifaction',
   GET_SESSIONS: 'caregiver/getMindfulnessSessionList?date=',

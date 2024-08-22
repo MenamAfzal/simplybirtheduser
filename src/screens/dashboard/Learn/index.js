@@ -74,7 +74,7 @@ export default function Learn({navigation}) {
 
   const Blogs = () => {
     return (
-      <ScrollView style={styles.browseView}>
+      <View style={styles.browseView}>
         <SearchBox
           value={searchQuery}
           placeholder="Search blogs"
@@ -93,7 +93,7 @@ export default function Learn({navigation}) {
                   .includes(searchQuery.toLowerCase()),
             )}
             contentContainerStyle={{
-              paddingBottom: verticalScale(75),
+              paddingBottom: verticalScale(140),
             }}
             showsVerticalScrollIndicator={false}
             // data={blogs.docs} // Use the data fetched from Redux store
@@ -130,7 +130,7 @@ export default function Learn({navigation}) {
             <Text>No Blog Available</Text>
           </View>
         )}
-      </ScrollView>
+      </View>
     );
   };
   const Quiz = () => {
@@ -154,7 +154,7 @@ export default function Learn({navigation}) {
                   .includes(searchQuery.toLowerCase()),
             )}
             contentContainerStyle={{
-              paddingBottom: verticalScale(75),
+              paddingBottom: verticalScale(140),
             }}
             showsVerticalScrollIndicator={false}
             // data={quiz.docs} // Use the data fetched from Redux store

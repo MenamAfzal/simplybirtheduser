@@ -1,64 +1,39 @@
-import {ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
+import {StyleSheet, View} from 'react-native';
 import BackHeader from '../../../components/BackHeader';
-import {COLORS} from '../../../constants';
-import {moderateScale} from '../../../utils/Metrics';
-import {FlatList} from 'react-native-gesture-handler';
 import {useDispatch, useSelector} from 'react-redux';
 import * as AppActions from '../../../redux/actions';
-import { terms_condition } from '../../../redux/actions/dash/index';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import WebView from 'react-native-webview';
+import {generateStyledHtml} from '../../../utils/HtmlHelper';
 
 export default function TermsAndConditions() {
-
+  const dispatch = useDispatch();
   const {navigate, goBack} = useNavigation();
 
-
-  const dispatch = useDispatch();
-  
-
-  const token = useSelector((state) => state.authReducer.token);
-  const terms_condition = useSelector((state) => state.dashReducer.terms_condition);
+  const token = useSelector(state => state.authReducer.token);
+  const terms_condition = useSelector(
+    state => state.dashReducer.terms_condition,
+  );
   console.log('T&C---->', terms_condition);
-
-
 
   useEffect(() => {
     dispatch(AppActions.terms_condition(token));
   }, [dispatch, token]);
 
-
-
-  // const urlAsString = JSON.stringify(about_us?.url);
-  console.log('URL--:', terms_condition?.url);
-
-
-
   return (
     <View style={{flex: 1}}>
-      {/* Custom header with a back button */}
-   
-      <BackHeader />
+      <BackHeader title={'Terms & Conditions'} />
 
-     {/* WebView */}
-
- 
-{/* WebView */}
-
- 
-
-<View style={{flex: 0.97}}>
-
-<WebView
-
-  source={{uri: terms_condition?.url}} // Replace with your desired URL
-
-  style={{flex: 1}}
-
-/>
-
-</View>
+      {terms_condition?.description && (
+        <WebView
+          style={{flex: 1}}
+          showsVerticalScrollIndicator={false}
+          source={{
+            html: generateStyledHtml(terms_condition?.description),
+          }}
+        />
+      )}
     </View>
   );
 }

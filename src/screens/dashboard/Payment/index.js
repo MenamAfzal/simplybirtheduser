@@ -25,7 +25,7 @@ import AddCard from '../../../components/AddCard';
 import {useDispatch, useSelector} from 'react-redux';
 import * as AppActions from '../../../redux/actions';
 import ListCards from '../../../components/ListCards';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, CommonActions} from '@react-navigation/native';
 
 export default function Payment({route}) {
   const navigation = useNavigation();
@@ -50,10 +50,20 @@ export default function Payment({route}) {
     setVisiblemodal(true);
     setTimeout(() => {
       setVisiblemodal(false);
-      navigation.reset({
-        index: 0,
-        routes: [{name: 'Home'}],
-      });
+
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [
+            {
+              name: 'Drawer',
+              state: {
+                routes: [{name: 'Dashboard'}],
+              },
+            },
+          ],
+        }),
+      );
     }, 1500);
   };
 
@@ -82,20 +92,16 @@ export default function Payment({route}) {
       dispatch(AppActions.subscribePlanCall(apiPayload, token)).then(
         response => {
           console.log(response?.data, 'response, handlePay');
-          if (response?.status == "Failed")
-          {
+          if (response?.status == 'Failed') {
             console.log(response);
-          }
-          else if (response?.data?.returnURL) {
+          } else if (response?.data?.returnURL) {
             Linking.openURL(
               response?.data?.returnURL?.use_stripe_sdk?.stripe_js,
             );
             showModal();
             setIsSubscribed();
             dispatch(AppActions.checkSubscriptionCall(token));
-          }
-          else
-          {
+          } else {
             showModal();
             setIsSubscribed();
           }
@@ -138,13 +144,15 @@ export default function Payment({route}) {
       <View style={innerStyles.details}>
         <Text style={innerStyles.headings}>Recurring</Text>
         <Text style={innerStyles.values}>
-          {selectedPlan?.default_price_data?.recurring?.interval == 'month' ? 'Monthly' : 'Yearly'}
+          {selectedPlan?.default_price_data?.recurring?.interval == 'month'
+            ? 'Monthly'
+            : 'Yearly'}
         </Text>
       </View>
       <View style={innerStyles.details}>
         <Text style={innerStyles.headings}>Total payment </Text>
         <Text style={innerStyles.priceStyle}>
-          ${selectedPlan?.starting_price_data?.unit_amount}
+          ${selectedPlan?.default_price_data?.unit_amount}
         </Text>
       </View>
       <AppButton
