@@ -8,7 +8,8 @@ import {useSelector} from 'react-redux';
 const Headers = props => {
   const {onPress} = props;
   const {openDrawer, navigate} = useNavigation();
-  const userData = useSelector(state => state.authReducer.loginData?.data);
+  const userData = useSelector(state => state.dashReducer.my_profile?.docs);
+
   return (
     <View style={styles.container}>
       <Pressable onPress={() => openDrawer()}>
