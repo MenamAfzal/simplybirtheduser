@@ -26,9 +26,7 @@ import * as AppActions from '../../../redux/actions';
 import Geolocation from '@react-native-community/geolocation';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import appleAuth, {
-
-} from '@invertase/react-native-apple-authentication';
+import appleAuth from '@invertase/react-native-apple-authentication';
 import {
   requestCameraPermission,
   requestGalleryPermission,
@@ -41,8 +39,8 @@ import {RequestUserPermission} from '../../../utils/PushNotification';
 export default function Login({navigation}) {
   const {navigate, reset} = useNavigation();
   const dispatch = useDispatch();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('harrisdonna60@yahoo.com');
+  const [password, setPassword] = useState('Pupanunu@1');
   const [remember, setRemember] = useState(false);
   const [toggleCheckBox, setToggleCheckBox] = useState(false);
   const [currentLocation, setCurrentLocation] = useState();
@@ -105,7 +103,7 @@ export default function Login({navigation}) {
     };
 
     fetchUserCred();
-  }, []); 
+  }, []);
 
   /* Get the location of the device */
   const getLocation = async () => {
@@ -150,8 +148,8 @@ export default function Login({navigation}) {
       //   firebaseToken: fcmToken,
       // };
       let params = {
-        email: 'harrisdonna60@yahoo.com',
-        password: 'Pupanunu@1',
+        email: email,
+        password: password,
         role: 2,
         location: {
           longitude: '12.345678',
@@ -184,8 +182,8 @@ export default function Login({navigation}) {
       // };
 
       let params = {
-        email: 'harrisdonna60@yahoo.com',
-        password: 'Pupanunu@1',
+        email: email,
+        password: password,
         role: 2,
         location: {
           longitude: '12.345678',
@@ -211,7 +209,6 @@ export default function Login({navigation}) {
     data = data.toLowerCase();
     setEmail(data);
   };
-
 
   return (
     <View style={styles.container}>
