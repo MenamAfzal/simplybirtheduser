@@ -3,18 +3,18 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Modal,
   Button,
   StyleSheet,
   KeyboardAvoidingView,
   Alert,
+  Platform,
 } from 'react-native';
-import AppTextInput from './AppTextInput';
 import {horizontalScale, moderateScale, verticalScale} from '../utils/Metrics';
 import {COLORS, FONTS} from '../constants';
 import {useDispatch, useSelector} from 'react-redux';
 import * as AppActions from '../redux/actions';
 import {CardField, createToken, useStripe} from '@stripe/stripe-react-native';
+import {Portal, Modal} from 'react-native-paper';
 
 export default AddCard = () => {
   const [isModalVisible, setModalVisible] = useState(false);
@@ -62,43 +62,46 @@ export default AddCard = () => {
         <Text style={styles.plusSign}>Add card</Text>
       </View>
 
-      <Modal
-        visible={isModalVisible}
-        animationType="fade"
-        onRequestClose={() => setModalVisible(false)}
-        transparent={true}>
-        <KeyboardAvoidingView
-          style={styles.modalContainer}
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-          <View style={styles.modalContent}>
-            <CardField
-              postalCodeEnabled={false}
-              placeholders={{
-                number: '4242 4242 4242 4242',
-              }}
-              cardStyle={{
-                backgroundColor: '#FFFFFF',
-                textColor: '#000000',
-              }}
-              style={{
-                width: '100%',
-                height: 50,
-                marginVertical: 30,
-              }}
-              onCardChange={cardDetails => {
-                console.log('cardDetails', cardDetails);
-              }}
-              onFocus={focusedField => {
-                console.log('focusField', focusedField);
-              }}
-            />
-            <View style={styles.buttonContainer}>
-              <Button title="Save" onPress={handleSaveCard} />
-              <Button title="Cancel" onPress={handleCancel} color="gray" />
-            </View>
-          </View>
-        </KeyboardAvoidingView>
-      </Modal>
+      {isModalVisible && (
+        <Portal>
+          <Modal
+            visible={isModalVisible}
+            onDismiss={() => setModalVisible(false)}
+            contentContainerStyle={{flex: 1}}>
+            <KeyboardAvoidingView
+              style={styles.modalContainer}
+              behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+              <View style={styles.modalContent}>
+                <CardField
+                  postalCodeEnabled={false}
+                  placeholders={{
+                    number: '4242 4242 4242 4242',
+                  }}
+                  cardStyle={{
+                    backgroundColor: '#FFFFFF',
+                    textColor: '#000000',
+                  }}
+                  style={{
+                    width: '100%',
+                    height: 50,
+                    marginVertical: 30,
+                  }}
+                  onCardChange={cardDetails => {
+                    console.log('cardDetails', cardDetails);
+                  }}
+                  onFocus={focusedField => {
+                    console.log('focusField', focusedField);
+                  }}
+                />
+                <View style={styles.buttonContainer}>
+                  <Button title="Save" onPress={handleSaveCard} />
+                  <Button title="Cancel" onPress={handleCancel} color="gray" />
+                </View>
+              </View>
+            </KeyboardAvoidingView>
+          </Modal>
+        </Portal>
+      )}
     </TouchableOpacity>
   );
 };

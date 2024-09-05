@@ -666,7 +666,7 @@ export function blogs_list(token) {
         console.log(json, 'error from blog list');
       }
     } catch (error) {
-      console.error(error, 'blog_error-->blogs_list');
+      console.log(error, 'blog_error-->blogs_list');
       dispatch({type: ACTION_TYPE.TOGGLE_LOADER, payload: false});
       dispatch({
         type: ACTION_TYPE.BLOGS_LIST,
@@ -701,7 +701,7 @@ export function quiz_list(token) {
       } else {
       }
     } catch (error) {
-      console.error(error, 'blog_error--->quiz_list');
+      console.log(error, 'blog_error--->quiz_list');
       dispatch({type: ACTION_TYPE.TOGGLE_LOADER, payload: false});
       if (error?.data?.message == 'Invalid Token')
         dispatch(AppActions.logout(), {

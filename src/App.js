@@ -1,4 +1,4 @@
-import 'react-native-gesture-handler'
+import 'react-native-gesture-handler';
 import React, {useEffect, useState} from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import {Provider} from 'react-redux';
@@ -8,6 +8,7 @@ import {PersistGate} from 'redux-persist/integration/react';
 import {View} from 'react-native';
 import Loading from './components/loader';
 import {StripeProvider} from '@stripe/stripe-react-native';
+import {PaperProvider} from 'react-native-paper';
 
 function App() {
   useEffect(() => {
@@ -16,7 +17,6 @@ function App() {
     }, 3000);
     return () => clearTimeout(timer);
   }, []);
-
 
   const [publishableKey, setPublishableKey] = useState('');
 
@@ -34,11 +34,13 @@ function App() {
     <Provider store={store}>
       <StripeProvider publishableKey={publishableKey}>
         <PersistGate loading={null} persistor={persistor}>
-          <View style={{flex: 1}}>
-            <Loading />
-            {/* <NoInternetModal show={isOffline} /> */}
-            <RootNavigator />
-          </View>
+          <PaperProvider>
+            <View style={{flex: 1}}>
+              <Loading />
+              {/* <NoInternetModal show={isOffline} /> */}
+              <RootNavigator />
+            </View>
+          </PaperProvider>
         </PersistGate>
       </StripeProvider>
     </Provider>

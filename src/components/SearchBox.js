@@ -21,7 +21,11 @@ export default SearchBox = props => {
         onChangeText={props.onChangeText}
       />
       <TouchableOpacity onPress={Keyboard.dismiss}>
-        <Image source={IMAGES.SEARCH} style={styles.imgSearch} />
+        <Image
+          source={IMAGES.SEARCH}
+          style={styles.imgSearch}
+          resizeMode="contain"
+        />
       </TouchableOpacity>
     </View>
   );
@@ -43,9 +47,8 @@ const styles = StyleSheet.create({
     width: horizontalScale(325),
   },
   imgSearch: {
-    height: verticalScale(36),
-    width: horizontalScale(35),
-    marginTop: moderateScale(8),
+    height: verticalScale(30),
+    width: horizontalScale(30),
     marginRight: moderateScale(8),
   },
 });
